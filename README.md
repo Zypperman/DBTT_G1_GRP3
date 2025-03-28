@@ -37,7 +37,36 @@ In our scenario, we deal with 2 parties:
 
 ### Diagram Reprsentation of use cases:
 ```mermaid
-    
+---
+config:
+  theme: forest
+---
+mindmap
+  root[Use Cases]
+        id1["`**1.Loan Default <br> Risk Prediction (LDRP)**`"]
+        ::icon(fas fa-exclamation-triangle)
+            id1[Basic LDRP]
+            id1[Intermediate<br>LDRP]
+            id1[CNN-Transformer<br>-assisted LDRP]
+            id1[Quantum circuit<br>-assisted LDRP]
+
+        id2["`**2.Credit-worthiness <br> Score Prediction (CWP)**`"]
+        ::icon(far fa-credit-card)
+            id2["Basic CWP "]
+            id2[" Time-series assisted CWP"]
+        id3["`**3.Applicant recommendations**`"]
+        ::icon(fas fa-list-ol)
+            id3["Top-k Risk Factor Analysis"]
+            id3["Loan Package Recommendation"]
+        id3["`**4.Ease of identification**`"]
+        ::icon(fas fa-search)
+            id3["Application Tagging"]
+            id3["Application Document<br>summarisation"]
+        id3["`**5.Officer-2-applicant recommendation**`"]
+        ::icon(fas fa-user-group)
+        id3["`**6.Text-filling tasks**`"]
+        ::icon(fas fa-inbox)
+
 ```
 
 | Feature | s/n | Description | Implementation |
@@ -47,13 +76,13 @@ In our scenario, we deal with 2 parties:
 | Transformer-assisted LDRP <br>(For capacity building) | 1.2 | Extending from Feature 1.0, we can incorporate CNN transformer architecture into our loan prediction model. | Due to a lack of data, we will be providing a possible implementation indicated in [this paper](https://arxiv.org/abs/2412.18222), and outlining a possible timeline for developing a pipeline and implementing this solution.|
 | Quantum-Circuit assisted LDRP <br> (For capacity building) | 1.3 | Extending from Feature 1.0, , we can incorporate quantum-circuit-based neural networks for loan default predictions given how well quantum systems are at simulating economic circumstances. | Due to a lack of data, we will be providing a possible implementation indicated in [this paper](https://arxiv.org/abs/2412.18222), and outlining a possible timeline for developing a pipeline and implementing this solution.|
 |Basic Credit-Worthiness Score Prediction (CWP) | 2.0 | We can standardise and automate the estimation for how well loan applicants are at managing their credit based on their credit history. <br>For clarity, please note that this score is different from LDRP in feature 1, as we assume that this score handles factors that are more heavily-influenced by economic factors relative to LDRP.  | The same models in features 1.0, 1.1 and 1.2 can be used.|
-| Time-series assisted CWP <br>(For capacity building)| 2.1 | We can incorporate the use of autoregressive models to take in time-series data reflecting various economic indicators about Thailand to objectively adjust a client's predicted loan defaulting probability. | We will establish a data pipeline for obtaining time-series data for specific economic factors, label them with the average risk for that time period, and train an autoregressive model to output as many weights as there are factors at  monthly intervals . These weights will then be used by a single KANs neural network layer, and modify the final output probability of loan defaulting. This effectively factors in the economic conditions when determining the probability of loan default and standardises any economic considerations that should be made.|
+| CWP with Time-series economic data <br>(For capacity building)| 2.1 | We can incorporate the use of autoregressive models to take in time-series data reflecting various economic indicators about Thailand to objectively adjust a client's predicted loan defaulting probability. | We will establish a data pipeline for obtaining time-series data for specific economic factors, label them with the average risk for that time period, and train an autoregressive model to output as many weights as there are factors at  monthly intervals . These weights will then be used by a single KANs neural network layer, and modify the final output probability of loan defaulting. This effectively factors in the economic conditions when determining the probability of loan default and standardises any economic considerations that should be made.|
 |Top-k Risk Factor Analysis | 3.0 | We can standardise and automate the estimation of the top k factors for loan defaulting based on the loan applicant. For simplicity, we will set k = 3 (and effectively rank the top 3 factors) | We will be using recommender systems, specifically a factorizing machine, or the KACDP model.|
 | Loan Package Recommendation <br>(For capacity building) | 3.1 | With the current information, we can provide officers with a recommended loan package with suggested amounts, tenures and Loan Term.| We will be using recommender systems, specifically a factorizing machine for pre-decided package amounts.|
 | Application-tagging for identification | 4.0 | Given the massive volume of details that Loan officers have to handle, distinguishing between loan applications may be difficult. Thus, we propose to use a large pool of pre-set text tags, and use machine learning to tag the top 3 categories that each application represents for ease of identification by officers. | We will implement this using an encoder-only transformer model like RoBERTa to select from a pool of pre-set tags that best represent the loan application. However for this implementation, we will not be using a fine-tuned model given the time constraints and the level of  |
 | Application document summarisation for identification | 4.1 | To supplement the issue raised in feature 3.0, we can also add a 15 word summary of the documentation provided to help officers semantically distinguish applications. This summary will be viewable as an icon tooltip from the overall view of all the applications.| We will use a robust extractive Machine summarization model. |
-| Officer Recommendation System | 5.0 | The Risk Manager has to assign loan applicants to officers as they come in, ensuring that applicants are not only processed efficiently, but also result in successful, non-defaulted applications. Thus, we can use machine learning to recommend officers based on factors like case history, scorecard statistics, their proficiency handling specific case types, and their average number of applicant interactions. |We can implement a recommender system and a factorizing machine model.|
-| Officer Text-filling Tasks <br>(for capacity building)| 6.0 | Loan Officers will need to communicate with applicants over various matters while handling their application, for the following tasks: <ol><li>Scheduling physical meetings</li><li>remediation for application discrepancies (ie proof of employment doesn't match the entered job)</li><li>Remediation of risk factors to improve loan scores </li></ol> Currently, this process is handled manually, where officers will pick from a few predetermined text snippets that match their task, then edit them according to the task at hand. We can automate this text-filling process. Officers will thus be more productive, needing only to read through what was generated, and be able to better spot mistakes in the generation process. |We will be using a locally hosted LLM that will: <ul><li>take in both a text prompt and a summary of the issues set by the officer, and produce an enterprise-ready response that the officer can vet before sending to the applicant</li> <li>take in just the summary of issues, use RAG to pick out the most appropriate text snippet, then generate a response for the loan officer to vet before sending to the applicant.</li></ul>|
+| Officer-2-Applicant recommendation | 5.0 | The Risk Manager has to assign loan applicants to officers as they come in, ensuring that applicants are not only processed efficiently, but also result in successful, non-defaulted applications. Thus, we can use machine learning to recommend officers based on factors like case history, scorecard statistics, their proficiency handling specific case types, and their average number of applicant interactions. |We can implement a recommender system and a factorizing machine model.|
+| Text-filling Tasks <br>(for capacity building)| 6.0 | Loan Officers will need to communicate with applicants over various matters while handling their application, for the following tasks: <ol><li>Scheduling physical meetings</li><li>remediation for application discrepancies (ie proof of employment doesn't match the entered job)</li><li>Remediation of risk factors to improve loan scores </li></ol> Currently, this process is handled manually, where officers will pick from a few predetermined text snippets that match their task, then edit them according to the task at hand. We can automate this text-filling process. Officers will thus be more productive, needing only to read through what was generated, and be able to better spot mistakes in the generation process. |We will be using a locally hosted LLM that will: <ul><li>take in both a text prompt and a summary of the issues set by the officer, and produce an enterprise-ready response that the officer can vet before sending to the applicant</li> <li>take in just the summary of issues, use RAG to pick out the most appropriate text snippet, then generate a response for the loan officer to vet before sending to the applicant.</li></ul>|
 
 # References and sources
 
