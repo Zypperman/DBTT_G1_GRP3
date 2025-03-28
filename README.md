@@ -44,28 +44,28 @@ config:
 mindmap
   root[Use Cases]
         id1["`**1.Loan Default <br> Risk Prediction (LDRP)**`"]
-        ::icon(fas fa-exclamation-triangle)
+        
             id1[Basic LDRP]
             id1[Intermediate<br>LDRP]
             id1[CNN-Transformer<br>-assisted LDRP]
             id1[Quantum circuit<br>-assisted LDRP]
 
         id2["`**2.Credit-worthiness <br> Score Prediction (CWP)**`"]
-        ::icon(far fa-credit-card)
+        
             id2["Basic CWP "]
             id2[" Time-series assisted CWP"]
         id3["`**3.Applicant recommendations**`"]
-        ::icon(fas fa-list-ol)
+        
             id3["Top-k Risk Factor Analysis"]
             id3["Loan Package Recommendation"]
         id3["`**4.Ease of identification**`"]
-        ::icon(fas fa-search)
+        
             id3["Application Tagging"]
             id3["Application Document<br>summarisation"]
         id3["`**5.Officer-2-applicant recommendation**`"]
-        ::icon(fas fa-user-group)
+        
         id3["`**6.Text-filling tasks**`"]
-        ::icon(fas fa-inbox)
+        
 
 ```
 
