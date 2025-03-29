@@ -1,4 +1,4 @@
-# DBTT_G1_GRP3
+# Krungsri Katalyst Dashboard implementation plan (DBTT_G1_GRP3)
 Project notebooks and implementations for backend to process and return data
 
 This backend service provides an API to serve a PyTorch model for inference.
@@ -94,3 +94,6 @@ mindmap
 - The variables considered within the HMEQ dataset are the most critical for determining Credit risk.
 - The economic conditions that the dataset was obtained from approximately mimics the conditions that the data has been collected from (namely being the United States of America.)
     - MLOPs will need to develop a data pipeline to automatically update the models used, referencing Kungsri's data-warehouses.
+=======
+The backend service will start on `http://localhost:8000`.
+
