@@ -45,22 +45,22 @@ mindmap
   root[Use Cases]
         id1["`**1.Loan Default <br> Risk Prediction (LDRP)**`"]
         
-            id1[0.Basic LDRP]
-            id1[1.Intermediate<br>LDRP]
-            id1[2.CNN-Transformer<br>-assisted LDRP]
-            id1[3.Quantum circuit<br>-assisted LDRP]
+            id1[1.0.Basic LDRP]
+            id1[1.1.Intermediate<br>LDRP]
+            id1[1.2.CNN-Transformer<br>-assisted LDRP]
+            id1[1.3.Quantum circuit<br>-assisted LDRP]
 
         id2["`**2.Credit-worthiness <br> Score Prediction (CWP)**`"]
-            id2["0.Basic CWP "]
-            id2["1.Time-series assisted CWP"]
+            id2["2.0.Basic CWP "]
+            id2["2.1.Time-series assisted CWP"]
 
         id3["`**3.Applicant recommendations**`"]        
-            id3["0.Top-k Risk Factor Analysis"]
-            id3["1.Loan Package Recommendation"]
+            id3["3.0.Top-k Risk Factor Analysis"]
+            id3["3.1.Loan Package Recommendation"]
 
         id3["`**4.Ease of identification**`"]        
-            id3["0.Application Tagging"]
-            id3["1.Application Document<br>summarisation"]
+            id3["4.0.Application Tagging"]
+            id3["4.1.Application Document<br>summarisation"]
 
         id3["`**5.0 Officer-2-applicant recommendation**`"]
         
