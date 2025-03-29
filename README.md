@@ -35,7 +35,7 @@ In our scenario, we deal with 2 parties:
 2. Risk Manager
 
 
-### Diagram Reprsentation of use cases:
+### Diagram Representation of use cases:
 ```mermaid
 ---
 config:
