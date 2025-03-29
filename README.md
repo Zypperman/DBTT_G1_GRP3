@@ -1,4 +1,4 @@
-# DBTT_G1_GRP3
+# Krungsri Katalyst Dashboard implementation plan (DBTT_G1_GRP3)
 Project notebooks and implementations for backend to process and return data
 
 This backend service provides an API to serve a PyTorch model for inference.
