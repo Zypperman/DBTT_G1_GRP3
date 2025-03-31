@@ -23,9 +23,8 @@ make setup
 ```bash
 make run
 ```
-
 This ensures that the proper version of packages will be used.
-  
+
 # Use Cases and Implementations
 
 We have designed the following use-cases, with each feature following the naming convention: `<mvp_num>.<usp_num>`, representing the main use-cases that we will term as the "Minimum Viable Product" (MVP) and extensions to these use-cases that we will term as "unique selling points" (USPs), ie. Feature `1.0` will refer to our first MVP, while `4.2` refers to the 2th USP under our 4th MVP.  
@@ -82,16 +81,18 @@ mindmap
 | Officer-2-Applicant recommendation | 5.0 | The Relations Manager has to assign loan applicants to officers as they come in, ensuring that applicants are not only processed efficiently, but also result in successful, non-defaulted applications. Thus, we can use machine learning to recommend officers based on factors like case history, scorecard statistics, their proficiency handling specific case types, and their average number of applicant interactions. | We can implement one of many models in this scenario: <ol><li>A Gaussian Mixture Model, with the number of components being the number of officers we have (albeit the model constantly needs to be updated using the EM algorithm)</li><li>A recommender system that uses a factorizing machine model for content-based filtering, factoring in both the loan applicant's existing traits, alongside some scorecard statistics for each officer.</li>|
 | Text-filling Tasks <br>(for capacity building)| 6.0 | Loan Officers will need to communicate with applicants over various matters while handling their application, for the following tasks: <ol><li>Scheduling physical meetings</li><li>remediation for application discrepancies (ie proof of employment doesn't match the entered job)</li><li>Remediation of risk factors to improve loan scores </li></ol> Currently, this process is handled manually, where officers will pick from a few predetermined text snippets that match their task, then edit them according to the task at hand. We can automate this text-filling process. Officers will thus be more productive, needing only to read through what was generated, and be able to better spot mistakes in the generation process. |We will be using a locally hosted LLM that will: <ul><li>take in both a text prompt and a summary of the issues set by the officer, and produce an enterprise-ready response that the officer can vet before sending to the applicant</li> <li>take in just the summary of issues, use RAG to pick out the most appropriate text snippet, then generate a response for the loan officer to vet before sending to the applicant.</li></ul>|
 
-# References and sources
+# References for data sources
 
 | Name | Use | link |
 |---------|---------|-------------|
 |Home Equity dataset (HMEQ) | For Credit risk prediction <br> (see all uses under Feature 1) |[Kaggle](https://www.kaggle.com/datasets/ajay1735/hmeq-data) |
+|Give Me Some Credit (GMEC) | Competition Dataset for robust credit information predictions |[Kaggle](https://www.kaggle.com/c/GiveMeSomeCredit/data) |
+
+- Referenced Notebooks, source code and articles are available in the usecases outlined as links.
 
 # Assumptions (and remedial action where applicable)
 - The variables considered within the HMEQ dataset are the most critical for determining Credit risk.
 - The economic conditions that the dataset was obtained from approximately mimics the conditions that the data has been collected from (namely being the United States of America.)
     - MLOPs will need to develop a data pipeline to automatically update the models used, referencing Kungsri's data-warehouses.
-=======
-The backend service will start on `http://localhost:8000`.
+
 
